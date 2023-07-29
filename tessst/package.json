@@ -6,11 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "is-yunse": "file:../package"
+    "minchopad": "file:../minchopad"
   }
 }
