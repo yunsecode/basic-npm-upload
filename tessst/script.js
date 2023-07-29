@@ -18,23 +18,22 @@ const jsonData = {
   date: '2023-07-29',
   category: 'Programming',
   tags: ['TypeScript', 'JavaScript'],
-  aaaaa: "",
   body: 'This is the content of the blog post.',
+  aaaaa: "",
 };
 
-const asd = [
-    "aaaaa"
-]
+const jsonDaraExt = {
+    aaaaa : string | null
+}
 
 const outputPath = 'sample-post.md';
 
-
-jsonToMd(jsonData, outputPath)
+jsonToMd(jsonDataExt, outputPath)
   .then(() => {
     console.log(`Content written successfully!`);
   })
   .catch((error) => {
-    console.error(error.message);
+    console.error("aaa error.message", error.message);
   });
 
 console.log("Asd");
