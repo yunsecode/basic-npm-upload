@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "CommonJS",
+      "outDir": "dist",
+      "strict": true,
+      "declaration": true,
+      "lib": ["ES6", "DOM", "ESNext"]
+    },
+    "include": ["src"]
+  }
