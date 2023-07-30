@@ -3,11 +3,11 @@ layout: post
 title: My Blog Post
 description: This is a blog post.
 author: John Doe
-date:
-category:
-tags:
+date: 2023-07-29
+category: Programming
+tags: TypeScript,JavaScript
 aaaaa:
 fffff:
-test:
+test: 1
 ---
-undefined
+This is the content of the blog post.
