@@ -1,4 +1,4 @@
-const { jsonToMd } = require('minchopad'); // TypeScript 모듈을 JavaScript에서 require로 불러옴
+const { jsonToMd, createIndex } = require('minchopad'); // TypeScript 모듈을 JavaScript에서 require로 불러옴
 
 const jsonData = {
   layout: 'post',
@@ -21,12 +21,16 @@ const asd = [
 
 const outputPath = 'sample-post.md';
 
-jsonToMd(jsonData, outputPath, asd)
-  .then(() => {
-    console.log(`Content written successfully!`);
-  })
-  .catch((error) => {
-    console.error("aaa error.message", error.message);
-  });
+// jsonToMd(jsonData, outputPath, asd)
+//   .then(() => {
+//     console.log(`Content written successfully!`);
+//   })
+//   .catch((error) => {
+//     console.error("aaa error.message", error.message);
+//   });
+// ㅁㄴㅇㅁㄴㅇ
+createIndex(["title"], "data/posts").catch((err) => {
+  console.log(err);
+})
 
-console.log("Asd");
+console.log("Fin program");
