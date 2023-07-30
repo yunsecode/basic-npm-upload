@@ -3,32 +3,34 @@ import { readFile } from 'fs/promises';
 
 const path = require('path');
 
-function getAllMdFileNames(path: string)
+interface MdHeaderData {
+    [key: string]: string;
+  }
+
+async function getAllMdFileNames(directoryPath: string): Promise<string[]>
 {
-    var filteredFiles = []
+    try {
+        const filteredFiles: string[] = [];
+        const files = fs.readdirSync(directoryPath);
 
-	try {
-        var files = fs.readdirSync(path);
-
-        for (var i = 0; i < files.length; i++) {
-            if (files[i].slice(-3) == ".md" || files[i].slice(-9) == ".markdown") {
-                filteredFiles.push(files[i])
+        for (const file of files) {
+            if (file.slice(-3) == ".md" || file.slice(-9) == ".markdown") {
+                filteredFiles.push(file)
             }
         }
+        return filteredFiles;
     } catch (err) {
         throw new Error((err as Error).message);
     }
-    return filteredFiles;
 }
 
 
-function getMdFileHeaderData(dividerIndexes: number[], fileContext: string[], filterKeys: string[])
+function getMdFileHeaderData(dividerIndexes: number[], fileContext: string[], filterKeys: string[]): MdHeaderData
 {
-    const result: { [key: string]: string } = {};
+    const result: MdHeaderData = {};
 
     for (let i = 0; i < dividerIndexes[1]; i++) {
         const [key, value] = fileContext[i].split(":").map((item) => item.trim());
-        // console.log(typeof key);
 
         if (filterKeys.includes(key)) {
             result[key] = value;
@@ -38,26 +40,22 @@ function getMdFileHeaderData(dividerIndexes: number[], fileContext: string[], fi
 }
 
 
-
-function createIndexErrorHandling(dividerIndexes: number[], filename: string)
+// TODO: 여기는 어떻게? 에러면그냥 pass 아님 다 멈추게?
+function createIndexErrorHandling(dividerIndexes: number[]): boolean
 {
     if (dividerIndexes[0] != 0) {
-        console.error(`file ${filename}: file have to start with divider "---"`);
-        // TODO: throw 해야 함
         return true;
     }
 
     if (dividerIndexes.length < 2) {
-        console.error(`file ${filename}: not divider "---" format`);
-        // TODO: throw 해야 함
         return true;
     }
     return false;
 }
 
-function getDividerIndexes(fileData: string[])
+function getDividerIndexes(fileData: string[]): number[]
 {
-    let dividerIndexes = [];
+    let dividerIndexes: number[] = [];
 
 	for (let i = 0; i < fileData.length; i++) {
 		if (fileData[i] == "---" || fileData[i] == "---\n" || fileData[i] == "---\r\n") {
@@ -89,41 +87,17 @@ async function readMd(filename: string, directoryPath: string): Promise<string[]
     }
 }
 
-// async function createIndex() {
-    //     const mdFileNames = getAllMdFileNames();
-    // 	let successNum = 0;
-    // 	let all = []
-
-    // 	for (const filename of mdFileNames) {
-        // 		const fileContext = await readMd(filename);
-        // 		const dividerIndexes = getDividerIndexes(fileContext);
-
-        // 		// error handling
-        //         if (createIndexErrorHandling(dividerIndexes, filename)) {
-            //             continue;
-            //         }
-            // 		// result.path = filename;
-            //         const result = getMdFileHeaderData(dividerIndexes, fileContext); // TODO: 원하는 것만 가져오게
-            // 		all.push(result)
-            // 		successNum++;
-            // 	}
-            // 	console.log(`success ${successNum} / ${mdFileNames.length}`);
-
-            // 	fs.promises.writeFile("data/test.json", JSON.stringify(all));
-            // }
-
 async function createIndex(filterKeys: string[] = [], directoryPath: string)
 {
-    let all = [];
-
     try {
-        const mdFileNames = getAllMdFileNames(directoryPath);
+        const all: MdHeaderData[] = [];
+        const mdFileNames = await getAllMdFileNames(directoryPath);
 
         for (const mdFileName of mdFileNames) {
             const fileContext = await readMd(mdFileName, directoryPath)
             const dividerIndexes = getDividerIndexes(fileContext);
 
-            if (createIndexErrorHandling(dividerIndexes, mdFileName)) {
+            if (createIndexErrorHandling(dividerIndexes)) {
                 continue;
             }
             const result = getMdFileHeaderData(dividerIndexes, fileContext, filterKeys); // TODO: 원하는 것만 가져오게

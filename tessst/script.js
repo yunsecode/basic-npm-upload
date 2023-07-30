@@ -29,7 +29,7 @@ const outputPath = 'sample-post.md';
 //     console.error("aaa error.message", error.message);
 //   });
 // ㅁㄴㅇㅁㄴㅇ
-createIndex(["title"], "data/posts").catch((err) => {
+createIndex(["title", "layout"], "data/posts").catch((err) => {
   console.log(err);
 })
 
