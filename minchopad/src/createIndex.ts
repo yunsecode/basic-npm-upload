@@ -87,7 +87,7 @@ async function readMd(filename: string, directoryPath: string): Promise<string[]
     }
 }
 
-async function createIndex(filterKeys: string[] = [], directoryPath: string)
+async function createIndex(filterKeys: string[] = [], directoryPath: string, resultPath: string)
 {
     try {
         const all: MdHeaderData[] = [];
@@ -100,11 +100,11 @@ async function createIndex(filterKeys: string[] = [], directoryPath: string)
             if (createIndexErrorHandling(dividerIndexes)) {
                 continue;
             }
-            const result = getMdFileHeaderData(dividerIndexes, fileContext, filterKeys); // TODO: 원하는 것만 가져오게
+            const result = getMdFileHeaderData(dividerIndexes, fileContext, filterKeys);
             all.push(result)
 
         }
-        fs.promises.writeFile("data/test.json", JSON.stringify(all));
+        fs.promises.writeFile(resultPath, JSON.stringify(all));
     } catch (error) {
         throw new Error((error as Error).message);
     }
