@@ -76,9 +76,10 @@ function getDividerIndexes(fileData: string[]): number[]
 	return dividerIndexes;
 }
 
-async function readMd(filename: string, directoryPath: string): Promise<string[]>
+async function readMd(filePath: string): Promise<string[]>
 {
-    const filePath = path.join(process.cwd(), directoryPath, filename);
+    // const filePath = path.join(process.cwd(), directoryPath, filename);
+    // console.log("aaa", filePath);
 
     try {
         const data = await readFile(filePath, 'utf-8');
@@ -88,42 +89,69 @@ async function readMd(filename: string, directoryPath: string): Promise<string[]
         } else if (data.includes('\n')) { // LF
             return data.split('\n');
         } else {
-            throw new Error("not a lf / crlf format");
+            return [];
         }
     } catch (err) {
         throw new Error((err as Error).message);
     }
 }
 
-async function createIndex(filterKeys: string[] = [], directoryPath: string, resultPath: string, descending_order: boolean = true)
+async function findAllFiles(all: MdHeaderData[], filterKeys: string[] = [], filePath: string)
 {
-    try {
-        const all: MdHeaderData[] = [];
-        const mdFileNames = await getAllMdFileNames(directoryPath);
-        let index = 0;
+    // const mdFileNames = await getAllMdFileNames(directoryPath);
+    // let index = 0;
 
-        for (const mdFileName of mdFileNames.filenames) {
-            const fileContext = await readMd(mdFileName, directoryPath)
-            const dividerIndexes = getDividerIndexes(fileContext);
+    // for (const mdFileName of mdFileNames.filenames) {
+        const fileContext = await readMd(filePath)
+        const dividerIndexes = getDividerIndexes(fileContext);
 
-            if (createIndexErrorHandling(dividerIndexes)) {
-                continue;
-            }
-            const result = getMdFileHeaderData(dividerIndexes, fileContext, filterKeys);
-            result["creation_time"] = String(mdFileNames.dates[index]);
-            index++;
-            all.push(result)
+        if (createIndexErrorHandling(dividerIndexes)) {
+            console.log("err");
+
+            return;
         }
-        if (descending_order) {
-            all.sort((a, b) => a.creation_time.localeCompare(b.creation_time));
-        } else {
-            all.sort((a, b) => b.creation_time.localeCompare(a.creation_time));
-        }
+        const result = getMdFileHeaderData(dividerIndexes, fileContext, filterKeys);
+        const directoryPath = path.dirname(filePath);
 
-        fs.promises.writeFile(resultPath, JSON.stringify(all));
-    } catch (error) {
-        throw new Error((error as Error).message);
-    }
+        result["category"] = directoryPath;
+        // index++;
+        console.log("push");
+
+        all.push(result)
+
+    // }
 }
+
+async function findAllDirectories(all: MdHeaderData[], filterKeys: string[] = [], directoryPath: string, resultPath: string, descending_order: boolean = true) {
+    try {
+      const files = await fs.promises.readdir(directoryPath);
+
+      for (const file of files) {
+        const fullPath = path.join(directoryPath, file);
+        const stats = await fs.promises.stat(fullPath);
+
+        if (stats.isDirectory()) {
+          console.log(`${fullPath} is directory`);
+          await findAllDirectories(all, filterKeys, fullPath, resultPath, descending_order);
+        } else {
+          console.log(`${fullPath} is file`);
+          await findAllFiles(all, filterKeys, fullPath);
+        }
+      }
+    } catch (err) {
+      console.error('디렉토리를 읽어오는 중 에러가 발생했습니다.', err);
+    }
+  }
+
+  async function createIndex(filterKeys: string[] = [], directoryPath: string, resultPath: string, descending_order: boolean = true) {
+    try {
+      const all: MdHeaderData[] = [];
+      await findAllDirectories(all, filterKeys, directoryPath, resultPath, descending_order);
+
+      await fs.promises.writeFile(resultPath, JSON.stringify(all));
+    } catch (error) {
+      throw new Error((error as Error).message);
+    }
+  }
 
 export { createIndex };

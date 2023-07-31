@@ -1,133 +1,57 @@
-
 [
     {
         "layout": "post",
-        "title": "The longer I live, the more beautiful life becomes",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Change your thoughts and you change your world",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "You never really learn much from hearing yourself speak",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "You only live once, but if you do it right, once is enough",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "In order to write about life first you must live it",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Life is what happens when you’re busy making other plans",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Either you run the day, or the day runs you",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Success is walking from failure to failure with no loss of enthusiasm",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Things work out best for those who make the best of how things work out",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "The road to success and the road to failure are almost exactly the same",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Whatever the mind of man can conceive and believe, it can achieve",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Whatever the mind of man can conceive and believe, it can achieve",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "The secret of success is to do the common thing uncommonly well",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Success usually comes to those who are too busy to be looking for it",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Strive not to be a success, but rather to be of value",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "If opportunity doesn’t knock, build a door",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Love the life you live. Live the life you love",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "The purpose of our lives is to be happy",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Only a life lived for others is a life worthwhile",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "\"In three words I can sum up everything I’ve learned about life",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "If you really look closely, most overnight successes took a long time",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
-        "title": "Keep smiling, because life is a beautiful thing and there's so much to smile about",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "post",
         "title": "Yunse Jekyll test",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "asd file# css 적용 위해서",
-        "title": "asd",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
-    },
-    {
-        "layout": "asd # css 적용 위해서",
-        "title": "asd",
-        "creation_time": "Sun Jul 30 2023 19:23:48 GMT+0200 (Central European Summer Time)"
+        "category": "data/posts"
     },
     {
         "layout": "7-31 # css 적용 위해서",
         "title": "7-31",
-        "creation_time": "Mon Jul 31 2023 08:56:46 GMT+0200 (Central European Summer Time)"
+        "category": "data/posts"
+    },
+    {
+        "layout": "asd file# css 적용 위해서",
+        "title": "asd",
+        "category": "data/posts"
+    },
+    {
+        "layout": "asd2-1",
+        "title": "asd2-1",
+        "category": "data/posts/asd2"
+    },
+    {
+        "layout": "asd2-2",
+        "title": "asd2-2",
+        "category": "data/posts/asd2"
+    },
+    {
+        "layout": "bbb1-1",
+        "title": "bbb1-1",
+        "category": "data/posts/asd2/bbb1"
+    },
+    {
+        "layout": "bbb1-2",
+        "title": "bbb1-2",
+        "category": "data/posts/asd2/bbb1"
+    },
+    {
+        "layout": "bbb2-2",
+        "title": "bbb2-2",
+        "category": "data/posts/asd2/bbb2"
+    },
+    {
+        "layout": "bbb2-2",
+        "title": "bbb2-2",
+        "category": "data/posts/asd2/bbb2"
+    },
+    {
+        "layout": "nwe folder",
+        "title": "nwe folder",
+        "category": "data/posts/asdasd"
+    },
+    {
+        "layout": "asd # css 적용 위해서",
+        "title": "asd",
+        "category": "data/posts"
     }
 ]
