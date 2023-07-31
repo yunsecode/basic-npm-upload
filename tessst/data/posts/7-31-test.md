@@ -1,6 +1,6 @@
 ---
-layout: asd file# css 적용 위해서
-title: asd
+layout: 7-31 # css 적용 위해서
+title: 7-31
 description: asd
 catagory: asd
 featured: asd
@@ -14,14 +14,3 @@ tags: asd
 tags_color: asd
 ---
 content
-
-ㅁㄴㅇ
-홈
-ㄴㅇㅎ
-ㅁㄴㅇㄹ
-ㅎㅁㄴㅇ
-ㅎ
-ㄴㅁㅇㅎ
-ㄴㅁㅇ
-ㅎㅁㄴㅇ
-ㅎ

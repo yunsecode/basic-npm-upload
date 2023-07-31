@@ -7,22 +7,30 @@ interface MdHeaderData {
     [key: string]: string;
   }
 
-async function getAllMdFileNames(directoryPath: string): Promise<string[]>
-{
+  async function getAllMdFileNames(directoryPath: string): Promise<{ filenames: string[], dates: Date[] }> {
     try {
-        const filteredFiles: string[] = [];
-        const files = fs.readdirSync(directoryPath);
+      let filteredFiles: string[] = [];
+      let filteredFilesDate: Date[] = [];
+      const files = fs.readdirSync(directoryPath);
 
-        for (const file of files) {
-            if (file.slice(-3) == ".md" || file.slice(-9) == ".markdown") {
-                filteredFiles.push(file)
-            }
+      for (const file of files) {
+        if (file.slice(-3) === ".md" || file.slice(-9) === ".markdown") {
+          try {
+            const stats = await fs.promises.stat(directoryPath + "/" + file);
+            filteredFiles.push(file);
+            filteredFilesDate.push(stats.birthtime);
+          } catch (err) {
+            console.error("Error reading file stats:", err);
+          }
         }
-        return filteredFiles;
+      }
+
+      return { filenames: filteredFiles, dates: filteredFilesDate };
     } catch (err) {
-        throw new Error((err as Error).message);
+      throw new Error((err as Error).message);
     }
-}
+  }
+
 
 
 function getMdFileHeaderData(dividerIndexes: number[], fileContext: string[], filterKeys: string[]): MdHeaderData
@@ -87,13 +95,14 @@ async function readMd(filename: string, directoryPath: string): Promise<string[]
     }
 }
 
-async function createIndex(filterKeys: string[] = [], directoryPath: string, resultPath: string)
+async function createIndex(filterKeys: string[] = [], directoryPath: string, resultPath: string, descending_order: boolean = true)
 {
     try {
         const all: MdHeaderData[] = [];
         const mdFileNames = await getAllMdFileNames(directoryPath);
+        let index = 0;
 
-        for (const mdFileName of mdFileNames) {
+        for (const mdFileName of mdFileNames.filenames) {
             const fileContext = await readMd(mdFileName, directoryPath)
             const dividerIndexes = getDividerIndexes(fileContext);
 
@@ -101,9 +110,16 @@ async function createIndex(filterKeys: string[] = [], directoryPath: string, res
                 continue;
             }
             const result = getMdFileHeaderData(dividerIndexes, fileContext, filterKeys);
+            result["creation_time"] = String(mdFileNames.dates[index]);
+            index++;
             all.push(result)
-
         }
+        if (descending_order) {
+            all.sort((a, b) => a.creation_time.localeCompare(b.creation_time));
+        } else {
+            all.sort((a, b) => b.creation_time.localeCompare(a.creation_time));
+        }
+
         fs.promises.writeFile(resultPath, JSON.stringify(all));
     } catch (error) {
         throw new Error((error as Error).message);
