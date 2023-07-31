@@ -1,57 +1,57 @@
 [
     {
-        "layout": "post",
         "title": "Yunse Jekyll test",
+        "date": "2021-09-10 15:01:35 +0300",
         "category": "data/posts"
     },
     {
-        "layout": "7-31 # css 적용 위해서",
-        "title": "7-31",
-        "category": "data/posts"
-    },
-    {
-        "layout": "asd file# css 적용 위해서",
-        "title": "asd",
-        "category": "data/posts"
-    },
-    {
-        "layout": "asd2-1",
-        "title": "asd2-1",
-        "category": "data/posts/asd2"
-    },
-    {
-        "layout": "asd2-2",
-        "title": "asd2-2",
-        "category": "data/posts/asd2"
-    },
-    {
-        "layout": "bbb1-1",
         "title": "bbb1-1",
+        "date": "2021-09-11",
         "category": "data/posts/asd2/bbb1"
     },
     {
-        "layout": "bbb1-2",
-        "title": "bbb1-2",
-        "category": "data/posts/asd2/bbb1"
-    },
-    {
-        "layout": "bbb2-2",
-        "title": "bbb2-2",
-        "category": "data/posts/asd2/bbb2"
-    },
-    {
-        "layout": "bbb2-2",
-        "title": "bbb2-2",
-        "category": "data/posts/asd2/bbb2"
-    },
-    {
-        "layout": "nwe folder",
-        "title": "nwe folder",
-        "category": "data/posts/asdasd"
-    },
-    {
-        "layout": "asd # css 적용 위해서",
-        "title": "asd",
+        "title": "7-31",
+        "date": "asd",
         "category": "data/posts"
+    },
+    {
+        "title": "asd",
+        "date": "asd",
+        "category": "data/posts"
+    },
+    {
+        "title": "asd",
+        "date": "asd",
+        "category": "data/posts"
+    },
+    {
+        "title": "asd2-1",
+        "date": "asd2-1",
+        "category": "data/posts/asd2"
+    },
+    {
+        "title": "asd2-2",
+        "date": "asd2-2",
+        "category": "data/posts/asd2"
+    },
+    {
+        "title": "bbb1-2",
+        "date": "bbb1-2",
+        "category": "data/posts/asd2/bbb1"
+    },
+    {
+        "title": "bbb2-2",
+        "date": "bbb2-2",
+        "category": "data/posts/asd2/bbb2"
+    },
+    {
+        "title": "bbb2-2",
+        "date": "bbb2-2",
+        "category": "data/posts/asd2/bbb2"
+    },
+    {
+        "title": "nwe folder",
+        "date": "nwe folder",
+        "category": "data/posts/asdasd"
     }
 ]
